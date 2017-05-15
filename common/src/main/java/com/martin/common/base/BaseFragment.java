@@ -40,6 +40,7 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
         super.onAttach(context);
         mActivity = (Activity) context;
         mContext = context;
+
     }
 
     @Nullable
