@@ -40,6 +40,8 @@ public class SplashActivity extends BaseActivity {
 //                .subscribe(onNextAction);
 
 
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
