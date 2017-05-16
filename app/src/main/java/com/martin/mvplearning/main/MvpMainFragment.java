@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.martin.common.base.BaseFragment;
+import com.martin.common.base.helper.FragmentAdapter;
+import com.martin.mvplearning.Constants;
 import com.martin.mvplearning.R;
 
 import java.util.ArrayList;
@@ -47,6 +49,37 @@ public class MvpMainFragment extends BaseFragment<ZhiHuMianPresenter, ZhihuMainM
 
     @Override
     public void showTabList(String[] mTabs) {
+
+        for (int i = 0; i < mTabs.length; i++) {
+            tabs.addTab(tabs.newTab().setText(mTabs[i]));
+            switch (i) {
+                case 0:
+                    fragments.add(new DailyFragment());
+                    break;
+                case 1:
+                    fragments.add(new SectionFragment());
+                    break;
+                case 2:
+                    fragments.add(new WechatFragment());
+                    break;
+                default:
+                    fragments.add(new QuickFragment());
+                    break;
+            }
+        }
+        int position = 0;
+        if (getArguments() != null) {
+            position = getArguments().getInt(Constants.ARG_POSITION, 0);
+        }
+
+        viewpager.setAdapter(new FragmentAdapter(getChildFragmentManager(), fragments));
+        viewpager.setCurrentItem(position);
+        tabs.setupWithViewPager(viewpager);
+        tabs.setVerticalScrollbarPosition(position);
+        for (int i = 0; i < mTabs.length; i++) {
+            tabs.getTabAt(i).setText(mTabs[i]);
+        }
+
 
     }
 

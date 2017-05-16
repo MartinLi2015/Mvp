@@ -9,7 +9,7 @@ import com.martin.common.base.BaseApp;
 public class MvpApp extends BaseApp {
     @Override
     public String setBaseUrl() {
-        return null;
+        return "http://news-at.zhihu.com/api/4/";
     }
 
 }
